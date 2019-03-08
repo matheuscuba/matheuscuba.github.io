@@ -1,0 +1,18 @@
+{
+    "title" : "Prazer, Matheus Cuba",
+    "subtitle" : "Desenvolvedor & fotógrafo",
+    "sections" : {
+        "about" : {
+            "title": "Sobre Mim",
+            "text": "<p>Olá, meu nome é Matheus Cuba.</p><p>Sou desenvolvedor Fullstack com experiência em diversas linguagens e frameworks</p><p>Aspirante a Fotógrafo e amante da música clássica</p>"
+        },
+        "photography": {
+            "title": "Fotografia",
+            "subtitle": "Alguns das minhas últimas fotografias do meu Instagram"
+        },
+        "projects": {
+            "title": "Projetos",
+            "subtitle": "Projetos, sites e outros trabalhos meus"
+        }
+    }
+}
