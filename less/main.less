@@ -1,3 +1,129 @@
 @import './_variables.less';
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
 
+body{
+    font-family: @font;
+}
+
+#wrapper{
+    section{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+h1.title{
+    font-size: 72px;
+}
+
+.social-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li{
+        font-size: 50px;
+        margin: 0 17px;
+        position: relative;
+
+        &:before{
+            content: '';
+            width: 0;
+            position: absolute;
+            left: 0;
+            border-bottom: 5px solid;
+            bottom: -15px;
+            transition: 0.3s;
+        }
+
+        &:hover{
+            &::before{
+                width: 100%;
+            }
+        }
+    }
+}
+
+section .next-section{
+    cursor: pointer;
+    position: absolute;
+    background: none;
+    border: none;
+    bottom: 25px;
+    margin: auto;
+    width: 30px;
+    height: 20px;
+
+    &::after, &::before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        border: 1px solid @font-dark;
+        top: 0;
+    }
+
+    &::after{
+        transform: rotate(20deg);
+        left: ~"calc(-50% - 1px)";
+    }
+
+    &::before{
+        transform: rotate(-20deg);
+        right: ~"calc(-50% - 1px)";
+    }
+
+    &:focus{
+        outline: 0;
+    }
+}
+
+.switch input {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  /**
+   * 1. Adjust this to size
+   */
+
+   .switch{
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+       .mecanism {
+            display: inline-block;
+            font-size: 20px; 
+            height: 1em;
+            width: 2em;
+            background: transparent;
+            border: 1px solid;
+            border-radius: 1em;
+            margin-right: 5px;
+       }
+       
+       .mecanism div {
+            height: 1em;
+            width: 1em;
+            border-radius: 1em;
+            -webkit-transition: all 300ms;
+                -moz-transition: all 300ms;
+                    transition: all 300ms;
+       }
+       
+       .mecanism input:checked + div {
+         -webkit-transform: translate3d(100%, 0, 0);
+            -moz-transform: translate3d(100%, 0, 0);
+                 transform: translate3d(100%, 0, 0);
+       }
+   }
+  
+
+@import './_home.less';
+@import './_about.less';
+@import './_theme.less';

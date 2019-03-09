@@ -43,11 +43,18 @@ window.Main = new function(){
         window.App = new Vue({
             el: '#wrapper',
             data: {
-                content: {},
+                theme: 'light-theme',
+                content: {
+                    sections: {
+                        about: {},
+                        photography: {},
+                        projects: {}
+                    }
+                },
                 projects: [],
                 links: {},
             },
-            beforeMount: function(){
+            beforeMount: async function(){
                 let vue = this;
                 self.$http.get('/i18n/' + self.lang + '.json').then(function(d){
                     let data = d.data;
@@ -70,6 +77,9 @@ window.Main = new function(){
                         let data = d.data;
                         vue.content = data;
                     });
+                },
+                toggleTheme: function(){
+                    this.theme = this.theme == 'dark-theme' ? 'light-theme' : 'dark-theme';
                 }
             }
         });

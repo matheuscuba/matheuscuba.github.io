@@ -1,0 +1,46 @@
+#wrapper{
+    &.light-theme{
+        background-color: @bg-light;
+        color: @font-light;
+
+        .social-links{
+            a, a:hover, a:visited{
+                color: @font-light;
+            }
+            li:before{
+                border-color: @font-light;
+            }
+        }
+        .switch{
+            .mecanism{
+                border-color: @font-light;
+                div{
+                    background-color: @font-light;
+                }
+            }
+        }
+    }
+
+    &.dark-theme{
+        background-color: @bg-dark;
+        color: @font-dark;
+
+        .social-links{
+            a, a:hover, a:visited{
+                color: @font-dark;
+            }
+            li:before{
+                border-color: @font-dark;
+            }
+        }
+        .switch{
+            .mecanism{
+                border-color: @font-dark;
+
+                div{
+                    background-color: @font-dark;
+                }
+            }
+        }
+    }
+}

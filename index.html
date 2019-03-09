@@ -4,50 +4,34 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+        <link rel="stylesheet" href="./css/plugins/reset.css">
         <link rel="stylesheet" href="./css/main.min.css">
         <link rel="stylesheet" href="./css/plugins/fullpage.min.css">
         <link rel="stylesheet" href="./css/animate.css">
     </head>
     <body>
-        <div id="wrapper">
-            <main id="home">
-                <h1 class="main-title animated fadeIn delay-1s fast">{{ content.title }}</h1>
-                <h4 class="subtitle animated fadeIn delay-1s">{{ content.subtitle }}</h4>
-                <ul class="social-media animated fadeIn delay-2s">
-                    <li>
-                        <a :href="links.github">
-                            <span class="fab fa-github"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a v:href="">
-                            <span class="fab fa-linkedin"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a v:href="">
-                            <span class="fab fa-instagram"></span>
-                        </a>
-                    </li>
-                </ul>
-                <a class="next-section" href="#about">
-                    <span class="fas fa-chevron-down fa-2x"></span>
-                </a>
-            </main>
-            <main id="about">
-                <header>
-                    <h1 class="section-title"> {{ content.sections.about.title }} </h1>
-                </header>
-                <div class="content">
-                    <div class="col">
-                        <div class="about-image">
-                            <img src="./img/dark_me.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col" v-html="content.sections.about.text"></div>
+        
+        <main id="wrapper" :class="theme">
+            <section id="home">
+                <div class="switch">
+                    <label class="mecanism" @change="toggleTheme">
+                        <input type="checkbox" />
+                        <div></div>
+                    </label>
                 </div>
-            </main>
-        </div>
+                <h1 class="title animated fadeIn delay-1s">{{ content.title }}</h1>
+                <h4 class="animated fadeIn delay-2s">{{ content.subtitle }}</h4>
+                <ul class="social-links animated fadeIn delay-2s">
+                    <li><a :href="links.github" target="_blank"><span class="fab fa-github"></span></a></li>
+                    <li><a :href="links.linkedin" target="_blank"><span class="fab fa-linkedin-in"></span></a></li>
+                    <li><a :href="links.instagram" target="_blank"><span class="fab fa-instagram"></span></a></li>
+                </ul>
+                <button class="next-section "></button>
+            </section>
+            <section id="about">
+                <h1 class="title">{{ content.sections.about.title }}</h1>
+            </section>
+        </main>
 
         <script src="./js/plugins/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
