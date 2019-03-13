@@ -13,6 +13,7 @@ window.Main = new function(){
         self.configAxios();
         self.initVue();
         self.loadParticles();
+        self.initFullPages();
     };
 
     self.defineLang = function(){
@@ -36,6 +37,16 @@ window.Main = new function(){
             params: {
                 v: version
             }
+        });
+    };
+
+    self.initFullPages = function(){
+        new fullpage('#wrapper', {
+            lockAnchors: true,
+            sectionSelector: '.section',
+            navigation: true,
+            slidesNavigation: true,
+            navigationTooltips: ['Home', 'Projetos', 'Fotografia', 'Sobre Mim', 'Contato']
         });
     };
 

@@ -12,38 +12,42 @@
     <body>
         
         <main id="wrapper" :class="theme">
-            <section id="home">
-                <div class="switch">
-                    <label class="mecanism" @change="toggleTheme">
-                        <input type="checkbox" />
-                        <div></div>
-                    </label>
-                </div>
-                <h1 class="title animated fadeIn delay-1s">{{ content.title }}</h1>
-                <h4 class="animated fadeIn delay-2s">{{ content.subtitle }}</h4>
-                <ul class="social-links animated fadeIn delay-2s">
-                    <li><a :href="links.github" target="_blank"><span class="fab fa-github"></span></a></li>
-                    <li><a :href="links.linkedin" target="_blank"><span class="fab fa-linkedin-in"></span></a></li>
-                    <li><a :href="links.instagram" target="_blank"><span class="fab fa-instagram"></span></a></li>
-                </ul>
-                <button class="next-section "></button>
-            </section>
-            <section id="about">
-                <h1 class="title">{{ content.sections.about.title }}</h1>
-                <div class="content">
-                    <div class="image">
-                        <img src="./img/dark_me.jpg" alt="Myself">
-                        <ul class="social-links">
-                            <li><a :href="links.github" target="_blank"><span class="fab fa-github"></span></a></li>
-                            <li><a :href="links.linkedin" target="_blank"><span class="fab fa-linkedin-in"></span></a></li>
-                            <li><a :href="links.instagram" target="_blank"><span class="fab fa-instagram"></span></a></li>
-                        </ul>
+            <div class="section">
+                <section id="home">
+                    <div class="switch">
+                        <label class="mecanism" @change="toggleTheme">
+                            <input type="checkbox" />
+                            <div></div>
+                        </label>
                     </div>
-                    <div class="commom-text" v-html="content.sections.about.text">
+                    <h1 class="title animated fadeIn delay-1s">{{ content.title }}</h1>
+                    <h4 class="animated fadeIn delay-2s">{{ content.subtitle }}</h4>
+                    <ul class="social-links animated fadeIn delay-2s">
+                        <li><a :href="links.github" target="_blank"><span class="fab fa-github"></span></a></li>
+                        <li><a :href="links.linkedin" target="_blank"><span class="fab fa-linkedin-in"></span></a></li>
+                        <li><a :href="links.instagram" target="_blank"><span class="fab fa-instagram"></span></a></li>
+                    </ul>
+                    <button class="next-section "></button>
+                </section>
+            </div>
+            <div class="section">
+                <section id="about">
+                    <h1 class="title">{{ content.sections.about.title }}</h1>
+                    <div class="content">
+                        <div class="image">
+                            <img src="./img/dark_me.jpg" alt="Myself">
+                            <ul class="social-links">
+                                <li><a :href="links.github" target="_blank"><span class="fab fa-github"></span></a></li>
+                                <li><a :href="links.linkedin" target="_blank"><span class="fab fa-linkedin-in"></span></a></li>
+                                <li><a :href="links.instagram" target="_blank"><span class="fab fa-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="commom-text" v-html="content.sections.about.text">
+                        </div>
+                        <div class="squares"></div>
                     </div>
-                    <div class="squares"></div>
-                </div>
-            </section>
+                </section>
+            </div>
         </main>
 
         <script src="./js/plugins/vue.js"></script>
