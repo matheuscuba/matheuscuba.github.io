@@ -30,6 +30,19 @@
             </section>
             <section id="about">
                 <h1 class="title">{{ content.sections.about.title }}</h1>
+                <div class="content">
+                    <div class="image">
+                        <img src="./img/dark_me.jpg" alt="Myself">
+                        <ul class="social-links">
+                            <li><a :href="links.github" target="_blank"><span class="fab fa-github"></span></a></li>
+                            <li><a :href="links.linkedin" target="_blank"><span class="fab fa-linkedin-in"></span></a></li>
+                            <li><a :href="links.instagram" target="_blank"><span class="fab fa-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="commom-text" v-html="content.sections.about.text">
+                    </div>
+                    <div class="squares"></div>
+                </div>
             </section>
         </main>
 
