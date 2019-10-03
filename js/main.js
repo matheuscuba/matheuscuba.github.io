@@ -46,7 +46,7 @@ window.Main = new function(){
             sectionSelector: '.section',
             navigation: true,
             slidesNavigation: true,
-            navigationTooltips: ['Home', 'Projetos', 'Fotografia', 'Sobre Mim', 'Contato']
+            navigationTooltips: ['Home', 'Projetos']
         });
     };
 

@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Matheus Cuba",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "gulp-cssmin": "^0.2.0"
+  }
 }

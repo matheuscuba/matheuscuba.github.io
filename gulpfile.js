@@ -12,7 +12,7 @@ const configs = {
 };
 
 gulp.task('watch', function () {
-  gulp.watch(configs.less.watch, gulp.parallel('less'));
+  gulp.watch(configs.less.watch, ['less']);
 });
 
 gulp.task('less', function () {
@@ -31,4 +31,4 @@ gulp.task('less', function () {
 
 });
 
-gulp.task('default', gulp.parallel('less', 'watch'));
+gulp.task('default', ['less', 'watch']);

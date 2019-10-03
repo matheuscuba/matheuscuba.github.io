@@ -1,3 +1,5 @@
+@import './_variables.less';
+
 #home{
     display: flex;
     justify-content: center;
@@ -7,10 +9,18 @@
     
     h1{
         margin-bottom: 15px;
+
+        @media @mobile{
+            text-align: center;
+        }
     }
 
     h4{
         font-size: 35px;
+
+        @media @mobile{
+            text-align: center;
+        }
     }
 
     .social-links{
