@@ -6,7 +6,7 @@ window.Main = new (function () {
 
     self.$http;
     self.lang;
-    self.supportedLangs = ['pt-BR', 'en-US'];
+    self.supportedLangs = ['pt-br', 'en-us'];
     self.isDarkMode =
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
