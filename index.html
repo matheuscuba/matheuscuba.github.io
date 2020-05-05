@@ -2,55 +2,274 @@
     <head>
         <title>Matheus Cuba</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
 
-        <link rel="stylesheet" href="./css/plugins/reset.css">
-        <link rel="stylesheet" href="./css/main.min.css">
-        <link rel="stylesheet" href="./css/plugins/fullpage.min.css">
-        <link rel="stylesheet" href="./css/animate.css">
+        <link rel="stylesheet" href="./dist/css/plugins/reset.css" />
+        <link rel="stylesheet" href="./dist/css/main.min.css" />
+        <link rel="stylesheet" href="./dist/css/plugins/fullpage.min.css" />
+        <link rel="stylesheet" href="./dist/css/animate.css" />
     </head>
     <body>
-        
         <main id="wrapper" :class="theme">
-            <div class="section">
-                <section id="home">
-                    <!-- <div class="switch">
-                        <label class="mecanism" @change="toggleTheme">
-                            <input type="checkbox" />
-                            <div></div>
-                        </label>
-                    </div> -->
-                    <h1 class="title animated fadeIn delay-1s">{{ content.title }}</h1>
-                    <h4 class="animated fadeIn delay-2s">{{ content.subtitle }}</h4>
-                    <ul class="social-links animated fadeIn delay-2s">
-                        <li><a :href="links.github" target="_blank"><span class="fab fa-github"></span></a></li>
-                        <!-- <li><a :href="links.stackoverflow" target="_blank"><span class="fab fa-stack-overflow"></span></a></li> -->
-                        <li><a :href="links.linkedin" target="_blank"><span class="fab fa-linkedin-in"></span></a></li>
-                        <li><a :href="links.instagram" target="_blank"><span class="fab fa-instagram"></span></a></li>
-                        <li><a :href="links.email" target="_blank"><span class="fas fa-envelope"></span></a></li>
-                    </ul>
-                    <button class="next-section "></button>
-                </section>
-            </div>
-            <div class="section">
-                <section id="projects">
-                    <h2 class="title">{{ content.sections.projects.subtitle }}</h2>
-                    <div class="content">
-                        <div class="project" v-for="project in projects">
-                            <a :href="project.link" :title="project.name" target="_blank" rel="noopener">
-                                <img :src="project.logo" :alt="project.name">
+            <label class="switch">
+                <input
+                    type="checkbox"
+                    :checked="theme == 'theme-dark'"
+                    @change="toggleTheme"
+                />
+                <span class="slider round"></span>
+            </label>
+            <section id="home">
+                <div class="flex-center">
+                    <h1 class="title text-center">
+                        Hello, I'm <br />
+                        <span>Matheus Cuba</span>
+                    </h1>
+                    <h2 class="subtitle text-center">
+                        I’m a Full Stack Developer currently working <br />
+                        as React Native Developer at
+                        <a
+                            href="https://ezoom.com.br"
+                            target="_blank"
+                            rel="noopener"
+                            >Ezoom</a
+                        >
+                    </h2>
+                    <ul class="links">
+                        <li>
+                            <a
+                                class="flex-center"
+                                href=""
+                                rel="noopener"
+                                target="_blank"
+                            >
+                                <span class="fab fa-github"></span>
                             </a>
-                        </div> 
+                        </li>
+                        <li>
+                            <a
+                                class="flex-center"
+                                href=""
+                                rel="noopener"
+                                target="_blank"
+                            >
+                                <span class="fab fa-stack-overflow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                class="flex-center"
+                                href=""
+                                rel="noopener"
+                                target="_blank"
+                            >
+                                <span class="fab fa-linkedin"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                class="flex-center"
+                                href=""
+                                rel="noopener"
+                                target="_blank"
+                            >
+                                <span class="fab fa-instagram"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                class="flex-center"
+                                href=""
+                                rel="noopener"
+                                target="_blank"
+                            >
+                                <span class="fab fa-medium-m"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                class="flex-center"
+                                href=""
+                                rel="noopener"
+                                target="_blank"
+                            >
+                                <span class="fab fa-google"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="javascript:void(0)" class="scroll">
+                        <svg
+                            width="30px"
+                            height="100%"
+                            viewBox="0 0 247 390"
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            style="
+                                fill-rule: evenodd;
+                                clip-rule: evenodd;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-miterlimit: 1.5;
+                            "
+                        >
+                            <path
+                                id="wheel"
+                                d="M123.359,79.775l0,72.843"
+                                style="
+                                    fill: none;
+                                    stroke: #fff;
+                                    stroke-width: 20px;
+                                "
+                            />
+                            <path
+                                id="mouse"
+                                d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z"
+                                style="
+                                    fill: none;
+                                    stroke: #fff;
+                                    stroke-width: 20px;
+                                "
+                            />
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            <section id="work">
+                <div class="flex-center">
+                    <h1 class="title text-center">My Work</h1>
+                    <h2 class="subtitle text-center">
+                        Mobile apps, front-end works, API’s and more
+                    </h2>
+                    <div class="items-wrapper">
+                        <div class="item" color="#571262">
+                            <img src="./img/work/maria.png" alt="" />
+                        </div>
+                        <div class="item" color="#004E7B">
+                            <img src="./img/work/xoot.png" alt="" />
+                        </div>
+                        <div class="item" color="#c62127">
+                            <img src="./img/work/roboagro.png" alt="" />
+                        </div>
+                        <div class="item" color="#ffffff">
+                            <img src="./img/work/recicle.png" alt="" />
+                        </div>
+                        <div class="item" color="#0C8073">
+                            <img src="./img/work/agrismart.png" alt="" />
+                        </div>
+                        <div class="item" color="#fc9200">
+                            <img src="./img/work/grendene.png" alt="" />
+                        </div>
+                        <div class="item" color="#005CA4">
+                            <img src="./img/work/becker.png" alt="" />
+                        </div>
+                        <div class="item" color="#f60">
+                            <img src="./img/work/viemar.png" alt="" />
+                        </div>
+                        <div class="item" color="#d21f34">
+                            <img src="./img/work/pisani.png" alt="" />
+                        </div>
+                        <div class="item" color="#0086be">
+                            <img src="./img/work/ativita.png" alt="" />
+                        </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
+            <section id="contact">
+                <div class="flex-center">
+                    <div class="contact-wrapper">
+                        <div class="left-content">
+                            <h1 class="title">
+                                Want to know <span>more</span>?
+                            </h1>
+                            <h2 class="subtitle">Feel free to contact-me</h2>
+                            <ul class="links">
+                                <li>
+                                    <a
+                                        class="flex-center"
+                                        href=""
+                                        rel="noopener"
+                                        target="_blank"
+                                    >
+                                        <span class="fab fa-github"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="flex-center"
+                                        href=""
+                                        rel="noopener"
+                                        target="_blank"
+                                    >
+                                        <span
+                                            class="fab fa-stack-overflow"
+                                        ></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="flex-center"
+                                        href=""
+                                        rel="noopener"
+                                        target="_blank"
+                                    >
+                                        <span class="fab fa-linkedin"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="flex-center"
+                                        href=""
+                                        rel="noopener"
+                                        target="_blank"
+                                    >
+                                        <span class="fab fa-instagram"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="flex-center"
+                                        href=""
+                                        rel="noopener"
+                                        target="_blank"
+                                    >
+                                        <span class="fab fa-medium-m"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="flex-center"
+                                        href=""
+                                        rel="noopener"
+                                        target="_blank"
+                                    >
+                                        <span class="fab fa-google"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <img
+                            class="contact-image"
+                            src="./img/profile.jpg"
+                            alt="Me"
+                        />
+                    </div>
+                </div>
+            </section>
         </main>
 
-        <script src="./js/plugins/vue.js"></script>
+        <script src="./dist/js/plugins/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
-        <script src="./js/plugins/particles.min.js"></script>
-        <script src="js/plugins/fullpage.js"></script>
-        <script src="./js/main.js"></script>
+        <script
+            defer
+            src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+            integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./dist/js/plugins/fullpage.js"></script>
+        <script src="./dist/js/main.min.js"></script>
     </body>
 </html>

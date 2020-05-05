@@ -1,100 +1,119 @@
-window.Main = new function(){
+window.Main = new (function () {
     'use strict';
 
-    let self = this;
-    let version = '1.0';
+    var self = this;
+    var version = '1.0';
 
     self.$http;
     self.lang;
     self.supportedLangs = ['pt-BR', 'en-US'];
+    self.isDarkMode =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    self.init = function(){
+    self.init = function () {
         self.defineLang();
         self.configAxios();
         self.initVue();
-        self.loadParticles();
         self.initFullPages();
+        self.initColors();
+        self.events();
     };
 
-    self.defineLang = function(){
-        let lang = navigator.language || navigator.userLanguage;
-        if(!lang || self.supportedLangs.indexOf(lang) < 0)
-            lang = 'en-US';
+    self.events = function () {
+        document
+            .getElementsByClassName('scroll')[0]
+            .addEventListener('click', function () {
+                self.pages.moveSectionDown();
+            });
+    };
+
+    self.defineLang = function () {
+        var lang = navigator.language || navigator.userLanguage;
+        if (!lang || self.supportedLangs.indexOf(lang) < 0) lang = 'en-US';
 
         self.lang = lang.toLowerCase();
     };
 
-    // Load Main Particles
-    self.loadParticles = function(){
-        particlesJS.load('home', 'js/plugins/particles.json', function() {
-            console.log('Particles loaded!');
-        });
+    self.initColors = function () {
+        var items = document.querySelectorAll('[color]');
+        for (var index = 0; index < items.length; index++) {
+            var element = items[index];
+            element.style.backgroundColor = element.getAttribute('color');
+        }
     };
 
-    self.configAxios = function(){
+    self.configAxios = function () {
         self.$http = axios.create({
             baseURL: window.location.href,
             params: {
-                v: version
-            }
+                v: version,
+            },
         });
     };
 
-    self.initFullPages = function(){
-        new fullpage('#wrapper', {
+    self.initFullPages = function () {
+        self.pages = new fullpage('#wrapper', {
             lockAnchors: true,
-            sectionSelector: '.section',
+            sectionSelector: 'section',
             navigation: true,
             slidesNavigation: true,
-            navigationTooltips: ['Home', 'Projetos']
+            navigationTooltips: ['Home', 'Projetos'],
         });
     };
 
-    self.initVue = function(){
+    self.initVue = function () {
         window.App = new Vue({
             el: '#wrapper',
             data: {
-                theme: 'light-theme',
+                theme: self.isDarkMode ? 'theme-dark' : 'theme-light',
                 content: {
                     sections: {
                         about: {},
                         photography: {},
-                        projects: {}
-                    }
+                        projects: {},
+                    },
                 },
                 projects: [],
                 links: {},
             },
-            beforeMount: async function(){
-                let vue = this;
-                self.$http.get('/i18n/' + self.lang + '.json').then(function(d){
-                    let data = d.data;
-                    vue.content = data;
-                });
-                self.$http.get('/data/links.json').then(function(d){
-                    let data = d.data;
-                    vue.links = data;
-                });
-                self.$http.get('/data/projects.json').then(function(d){
-                    let data = d.data;
-                    vue.projects = data;
-                });
+            beforeMount: async function () {
+                var vue = this;
+                // self.$http
+                //     .get('/i18n/' + self.lang + '.json')
+                //     .then(function (d) {
+                //         var data = d.data;
+                //         vue.content = data;
+                //     });
+                // self.$http.get('/data/links.json').then(function (d) {
+                //     var data = d.data;
+                //     vue.links = data;
+                // });
+                // self.$http.get('/data/projects.json').then(function (d) {
+                //     var data = d.data;
+                //     vue.projects = data;
+                // });
             },
             methods: {
-                changeLang: function(lang){
-                    let vue = this;
+                changeLang: function (lang) {
+                    var vue = this;
                     self.lang = lang;
-                    self.$http.get('/i18n/' + self.lang + '.json').then(function(d){
-                        let data = d.data;
-                        vue.content = data;
-                    });
+                    self.$http
+                        .get('/i18n/' + self.lang + '.json')
+                        .then(function (d) {
+                            var data = d.data;
+                            vue.content = data;
+                        });
                 },
-                toggleTheme: function(){
-                    this.theme = this.theme == 'dark-theme' ? 'light-theme' : 'dark-theme';
-                }
-            }
+                toggleTheme: function () {
+                    this.theme =
+                        this.theme == 'theme-dark'
+                            ? 'theme-light'
+                            : 'theme-dark';
+                },
+            },
         });
     };
 
     self.init();
-};
+})();

@@ -1,52 +1,91 @@
-#wrapper{
-    &.light-theme{
-        background-color: @bg-light;
-        color: @font-light;
+@import '_variables.less';
 
-        .social-links{
-            a, a:hover, a:visited{
-                color: @font-light;
-            }
-            li:before{
-                border-color: @font-light;
-            }
-        }
-        .switch{
-            .mecanism{
-                border-color: @font-light;
-                div{
-                    background-color: @font-light;
-                }
-            }
-        }
-        .squares{
-            border-color: @font-light;
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: @white;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: @black;
+    }
+}
+
+.theme-dark {
+    section {
+        background-color: @black;
+    }
+
+    .title {
+        color: @white;
+    }
+
+    .subtitle {
+        color: @medium-gray;
+
+        a {
+            color: @white;
         }
     }
 
-    &.dark-theme{
-        background-color: @bg-dark;
-        color: @font-dark;
+    .links li a {
+        background-color: @dark-gray;
+        color: @white;
 
-        .social-links{
-            a, a:hover, a:visited{
-                color: @font-dark;
-            }
-            li:before{
-                border-color: @font-dark;
-            }
+        &:hover {
+            background-color: @green;
+            color: @white;
         }
-        .switch{
-            .mecanism{
-                border-color: @font-dark;
+    }
 
-                div{
-                    background-color: @font-dark;
-                }
-            }
+    .btn-default {
+        border-color: @white;
+        color: @white;
+    }
+
+    .scroll {
+        svg * {
+            stroke: @white !important;
         }
-        .squares{
-            border-color: @font-dark;
+    }
+}
+
+.theme-light {
+    section {
+        background-color: @white;
+    }
+
+    .title {
+        color: @black;
+    }
+
+    .subtitle {
+        color: @medium-gray;
+        a {
+            color: @black;
+        }
+    }
+
+    .links li a {
+        background-color: @light-gray;
+        color: @dark-gray;
+
+        &:hover {
+            background-color: @green;
+            color: @white;
+        }
+    }
+
+    .btn-default {
+        border-color: @black;
+        color: @black;
+    }
+
+    .scroll {
+        svg * {
+            stroke: @black !important;
         }
     }
 }

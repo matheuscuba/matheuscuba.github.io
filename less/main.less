@@ -1,131 +1,193 @@
-@import './_variables.less';
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+@import '_variables.less';
+@import '_utils.less';
+@import '_theme.less';
 
-body{
+.title {
+    font-size: 4em;
     font-family: @font;
-    overflow-x: hidden;
+    margin-bottom: 20px;
+    line-height: initial;
+
+    span {
+        background-color: @green;
+        padding: 0 10px;
+        color: @white;
+    }
 }
 
-#wrapper{
-    section{
+.subtitle {
+    font-size: 2em;
+    font-family: @font;
+    margin-bottom: 30px;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+        &:not(:last-child) {
+            margin-right: 20;
+        }
+
+        a {
+            width: 60px;
+            height: 60px;
+            border-radius: 100px;
+            font-size: 2em;
+            transition: 0.2s;
+        }
+    }
+}
+
+.btn-default {
+    padding: 15 30;
+    border-width: 3px;
+    margin-top: 50;
+    font-size: 20;
+    font-family: @font;
+    background: transparent;
+    cursor: pointer;
+}
+
+.switch {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    z-index: 100;
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .slider {
+            background-color: @green;
+        }
+
+        &:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: @light-gray;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 34px;
+
+        &:before {
+            position: absolute;
+            content: '';
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+    }
+}
+
+main {
+    height: 100%;
+
+    section {
         width: 100%;
         height: 100%;
     }
 }
 
-h1.title{
-    font-size: 72px;
-}
+#work .flex-center {
+    justify-content: flex-start !important;
+    padding: 122px;
 
-.social-links{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .items-wrapper {
+        margin-top: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
 
-    li{
-        font-size: 50px;
-        margin: 0 17px;
-        position: relative;
+        .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 261px;
+            height: 191px;
+            background-color: attr(color);
+            border-radius: 6px;
+            margin: 10px;
+            transition: 0.2s;
+            cursor: pointer;
 
-        &:before{
-            content: '';
-            width: 0;
-            position: absolute;
-            left: 0;
-            border-bottom: 5px solid;
-            bottom: -15px;
-            transition: 0.3s;
-        }
+            img {
+                width: 140px;
+            }
 
-        &:hover{
-            &::before{
-                width: 100%;
+            &:hover {
+                transform: scale(1.05);
             }
         }
     }
 }
 
-section .next-section{
-    cursor: pointer;
-    position: absolute;
-    background: none;
-    border: none;
-    bottom: 25px;
-    margin: auto;
-    width: 30px;
-    height: 20px;
+#contact {
+    .contact-wrapper {
+        display: flex;
+        flex-direction: row;
 
-    &::after, &::before{
-        content: '';
-        position: absolute;
-        width: 100%;
-        border: 1px solid @font-dark;
-        top: 0;
+        .left-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
     }
 
-    &::after{
-        transform: rotate(20deg);
-        left: ~"calc(-50% - 1px)";
-    }
-
-    &::before{
-        transform: rotate(-20deg);
-        right: ~"calc(-50% - 1px)";
-    }
-
-    &:focus{
-        outline: 0;
+    .contact-image {
+        width: 308px;
+        height: 308px;
+        border-radius: 300px;
+        margin-left: 60px;
     }
 }
 
-.switch input {
+// Stuff that matters.
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(100px);
+    }
+}
+
+.scroll {
     position: absolute;
-    opacity: 0;
-  }
-  
-  /**
-   * 1. Adjust this to size
-   */
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 50px;
+    height: 50px;
 
-   .switch{
-        cursor: pointer;
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        font-size: 12px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-       .mecanism {
-            display: inline-block;
-            font-size: 20px; 
-            height: 1em;
-            width: 2em;
-            background: transparent;
-            border: 1px solid;
-            border-radius: 1em;
-            margin-right: 5px;
-       }
-       
-       .mecanism div {
-            height: 1em;
-            width: 1em;
-            border-radius: 1em;
-            -webkit-transition: all 300ms;
-                -moz-transition: all 300ms;
-                    transition: all 300ms;
-       }
-       
-       .mecanism input:checked + div {
-         -webkit-transform: translate3d(100%, 0, 0);
-            -moz-transform: translate3d(100%, 0, 0);
-                 transform: translate3d(100%, 0, 0);
-       }
-   }
-  
-
-@import './_home.less';
-@import './_about.less';
-@import './_projects.less';
-@import './_theme.less';
+    svg #wheel {
+        animation: scroll ease 1.5s infinite;
+    }
+}
