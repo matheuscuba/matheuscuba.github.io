@@ -1,0 +1,8 @@
+title: Olá, sou<br/> <span>Matheus Cuba</span>
+subtitle: Desenvolvedor Full Stack atualmente trabalhando como <br /> React Native Developer na <a href='https://ezoom.com.br' target='_blank' rel='noopener'>Ezoom</a>
+work:
+    title: Meu trabalho
+    text: Apps mobile, front-end, API's e mais
+contact:
+    title: Gostou do que <span>viu</span>?
+    text: Fique a vontade para entrar em contato

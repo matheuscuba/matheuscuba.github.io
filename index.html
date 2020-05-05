@@ -1,4 +1,6 @@
-<html>
+<!-- Doctype HTML5 -->
+<!doctype html>
+<html dir="ltl" lang="en">
     <head>
         <title>Matheus Cuba</title>
 
@@ -7,10 +9,43 @@
             content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
 
-        <link rel="stylesheet" href="./dist/css/plugins/reset.css" />
+        <!-- Set character encoding for the document -->
+        <meta charset="utf-8">
+        <!-- Meta Description -->
+        <meta name="description" content="I’m a Full Stack Developer currently working as React Native Developer">
+
+        <!-- To run web application in full-screen -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        
+        <!-- Status Bar Style (see Supported Meta Tags below for available values) -->
+        <!-- Has no effect unless you have the previous meta tag -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+
+        <link rel="stylesheet" href="./dist/css/plugins/reset.css" defer/>
+        <link rel="stylesheet" href="./dist/css/plugins/fullpage.min.css" defer/>
         <link rel="stylesheet" href="./dist/css/main.min.css" />
-        <link rel="stylesheet" href="./dist/css/plugins/fullpage.min.css" />
-        <link rel="stylesheet" href="./dist/css/animate.css" />
+        <link rel="stylesheet" href="./dist/css/animate.min.css" defer/>
+
+        <!-- Chrome, Firefox OS and Opera -->
+        <meta name="theme-color" content="#000" />
+        <!-- Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="#000" />
+        <!-- iOS Safari -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000" />
     </head>
     <body>
         <main id="wrapper" :class="theme">
@@ -22,77 +57,82 @@
                 />
                 <span class="slider round"></span>
             </label>
+            <ul class="langs">
+                <li
+                    v-for="lang in languages"
+                    :key="lang"
+                    @click="changeLang(lang)"
+                >
+                    {{ lang.substring(0,2) }}
+                </li>
+            </ul>
             <section id="home">
                 <div class="flex-center">
-                    <h1 class="title text-center">
-                        Hello, I'm <br />
-                        <span>Matheus Cuba</span>
-                    </h1>
-                    <h2 class="subtitle text-center">
-                        I’m a Full Stack Developer currently working <br />
-                        as React Native Developer at
-                        <a
-                            href="https://ezoom.com.br"
-                            target="_blank"
-                            rel="noopener"
-                            >Ezoom</a
-                        >
-                    </h2>
-                    <ul class="links">
-                        <li>
+                    <h1
+                        class="title text-center animated fadeIn"
+                        v-if="content"
+                        v-html="content.title"
+                    ></h1>
+                    <h2
+                        class="subtitle text-center animated fadeIn delay-1s"
+                        v-if="content.subtitle"
+                        v-html="content.subtitle"
+                    ></h2>
+                    <ul class="links animated fadeIn delay-2s">
+                        <li v-if="links.github">
                             <a
                                 class="flex-center"
-                                href=""
+                                :href="links.github"
                                 rel="noopener"
                                 target="_blank"
                             >
                                 <span class="fab fa-github"></span>
                             </a>
                         </li>
-                        <li>
+                        <li v-if="links.stackoverflow">
                             <a
                                 class="flex-center"
-                                href=""
+                                :href="links.stackoverflow"
                                 rel="noopener"
                                 target="_blank"
                             >
                                 <span class="fab fa-stack-overflow"></span>
                             </a>
                         </li>
-                        <li>
+                        <li v-if="links.linkedin">
                             <a
                                 class="flex-center"
-                                href=""
+                                :href="links.linkedin"
                                 rel="noopener"
                                 target="_blank"
                             >
                                 <span class="fab fa-linkedin"></span>
                             </a>
                         </li>
-                        <li>
+                        <li v-if="links.instagram">
                             <a
                                 class="flex-center"
-                                href=""
+                                :href="links.instagram"
                                 rel="noopener"
                                 target="_blank"
                             >
                                 <span class="fab fa-instagram"></span>
                             </a>
                         </li>
-                        <li>
+                        <li v-if="links.medium">
                             <a
                                 class="flex-center"
-                                href=""
+                                :href="links.medium"
                                 rel="noopener"
                                 target="_blank"
                             >
                                 <span class="fab fa-medium-m"></span>
                             </a>
                         </li>
-                        <li>
+                        <li v-if="links.email">
                             <a
                                 class="flex-center"
-                                href=""
+                                :href="links.email"
                                 rel="noopener"
                                 target="_blank"
                             >
@@ -140,41 +180,26 @@
             </section>
             <section id="work">
                 <div class="flex-center">
-                    <h1 class="title text-center">My Work</h1>
-                    <h2 class="subtitle text-center">
-                        Mobile apps, front-end works, API’s and more
-                    </h2>
+                    <h1 class="title text-center" v-if="content.work">
+                        {{ content.work.title }}
+                    </h1>
+                    <h2
+                        class="subtitle text-center"
+                        v-if="content.work"
+                        v-html="content.work.text"
+                    ></h2>
                     <div class="items-wrapper">
-                        <div class="item" color="#571262">
-                            <img src="./img/work/maria.png" alt="" />
-                        </div>
-                        <div class="item" color="#004E7B">
-                            <img src="./img/work/xoot.png" alt="" />
-                        </div>
-                        <div class="item" color="#c62127">
-                            <img src="./img/work/roboagro.png" alt="" />
-                        </div>
-                        <div class="item" color="#ffffff">
-                            <img src="./img/work/recicle.png" alt="" />
-                        </div>
-                        <div class="item" color="#0C8073">
-                            <img src="./img/work/agrismart.png" alt="" />
-                        </div>
-                        <div class="item" color="#fc9200">
-                            <img src="./img/work/grendene.png" alt="" />
-                        </div>
-                        <div class="item" color="#005CA4">
-                            <img src="./img/work/becker.png" alt="" />
-                        </div>
-                        <div class="item" color="#f60">
-                            <img src="./img/work/viemar.png" alt="" />
-                        </div>
-                        <div class="item" color="#d21f34">
-                            <img src="./img/work/pisani.png" alt="" />
-                        </div>
-                        <div class="item" color="#0086be">
-                            <img src="./img/work/ativita.png" alt="" />
-                        </div>
+                        <a
+                            class="item"
+                            v-for="item in projects"
+                            :key="item.name"
+                            :color="item.color"
+                            :href="item.link"
+                            rel="noopener"
+                            target="_blank"
+                        >
+                            <img :data-src="item.image" :alt="item.name" />
+                        </a>
                     </div>
                 </div>
             </section>
@@ -182,25 +207,31 @@
                 <div class="flex-center">
                     <div class="contact-wrapper">
                         <div class="left-content">
-                            <h1 class="title">
-                                Want to know <span>more</span>?
-                            </h1>
-                            <h2 class="subtitle">Feel free to contact-me</h2>
-                            <ul class="links">
-                                <li>
+                            <h1
+                                class="title"
+                                v-if="content.contact"
+                                v-html="content.contact.title"
+                            ></h1>
+                            <h2
+                                class="subtitle"
+                                v-if="content.contact"
+                                v-html="content.contact.text"
+                            ></h2>
+                            <ul class="links animated fadeIn delay-2s">
+                                <li v-if="links.github">
                                     <a
                                         class="flex-center"
-                                        href=""
+                                        :href="links.github"
                                         rel="noopener"
                                         target="_blank"
                                     >
                                         <span class="fab fa-github"></span>
                                     </a>
                                 </li>
-                                <li>
+                                <li v-if="links.stackoverflow">
                                     <a
                                         class="flex-center"
-                                        href=""
+                                        :href="links.stackoverflow"
                                         rel="noopener"
                                         target="_blank"
                                     >
@@ -209,40 +240,40 @@
                                         ></span>
                                     </a>
                                 </li>
-                                <li>
+                                <li v-if="links.linkedin">
                                     <a
                                         class="flex-center"
-                                        href=""
+                                        :href="links.linkedin"
                                         rel="noopener"
                                         target="_blank"
                                     >
                                         <span class="fab fa-linkedin"></span>
                                     </a>
                                 </li>
-                                <li>
+                                <li v-if="links.instagram">
                                     <a
                                         class="flex-center"
-                                        href=""
+                                        :href="links.instagram"
                                         rel="noopener"
                                         target="_blank"
                                     >
                                         <span class="fab fa-instagram"></span>
                                     </a>
                                 </li>
-                                <li>
+                                <li v-if="links.medium">
                                     <a
                                         class="flex-center"
-                                        href=""
+                                        :href="links.medium"
                                         rel="noopener"
                                         target="_blank"
                                     >
                                         <span class="fab fa-medium-m"></span>
                                     </a>
                                 </li>
-                                <li>
+                                <li v-if="links.email">
                                     <a
                                         class="flex-center"
-                                        href=""
+                                        :href="links.email"
                                         rel="noopener"
                                         target="_blank"
                                     >
@@ -253,7 +284,7 @@
                         </div>
                         <img
                             class="contact-image"
-                            src="./img/profile.jpg"
+                            data-src="./img/profile.jpg"
                             alt="Me"
                         />
                     </div>
@@ -261,15 +292,15 @@
             </section>
         </main>
 
-        <script src="./dist/js/plugins/vue.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="./dist/js/plugins/vue.min.js"></script>
+        <script src="./dist/js/plugins/yaml.min.js"></script>
         <script
             defer
             src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
             integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
             crossorigin="anonymous"
         ></script>
-        <script src="./dist/js/plugins/fullpage.js"></script>
+        <script src="./dist/js/plugins/fullpage.min.js"></script>
         <script src="./dist/js/main.min.js"></script>
     </body>
 </html>

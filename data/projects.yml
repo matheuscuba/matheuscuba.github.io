@@ -1,0 +1,45 @@
+projects:
+  # - name: Maria Açai
+  #   color: rgb(87, 18, 98)
+  #   image: ./img/work/maria.png
+  #   link: 
+  # - name: Xoot
+  #   color: rgb(0, 78, 123)
+  #   image: ./img/work/xoot.png
+  #   link: \#
+  - name: Roboagro
+    color: rgb(198, 33, 39)
+    image: ./img/work/roboagro.png
+    link: https://play.google.com/store/apps/details?id=com.ezoom.roboagro
+  # - name: Recicle Bem
+  #   color: rgb(255, 255, 255)
+  #   image: ./img/work/recicle.png
+  #   link: \#
+  # - name: Agrismart
+  #   color: rgb(12, 128, 115)
+  #   image: ./img/work/agrismart.png
+  #   link: 
+  - name: Grenedene Kids
+    color: rgb(252, 146, 0)
+    image: ./img/work/grendene.png
+    link: https://play.google.com/store/apps/details?id=com.grendeneapp&hl=pt_BR
+  - name: Consórcios Becker
+    color: rgb(0, 92, 164)
+    image: ./img/work/becker.png
+    link: http://consorciobecker.com.br
+  - name: Viemar
+    color: rgb(255, 102, 0)
+    image: ./img/work/viemar.png
+    link: https://www.viemar.com
+  - name: Evoluire
+    color: rgb(0, 106, 60)
+    image: ./img/work/evoluire.png
+    link: http://www.evoluire.com.br    
+  - name: Pisani
+    color: rgb(210, 31, 52)
+    image: ./img/work/pisani.png
+    link: https://www.pisani.com.br
+  - name: Ativitá
+    color: rgb(0, 134, 190)
+    image: ./img/work/ativita.png
+    link: http://www.ativita.net    

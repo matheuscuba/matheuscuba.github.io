@@ -13,10 +13,8 @@ window.Main = new (function () {
 
     self.init = function () {
         self.defineLang();
-        self.configAxios();
         self.initVue();
         self.initFullPages();
-        self.initColors();
         self.events();
     };
 
@@ -43,22 +41,12 @@ window.Main = new (function () {
         }
     };
 
-    self.configAxios = function () {
-        self.$http = axios.create({
-            baseURL: window.location.href,
-            params: {
-                v: version,
-            },
-        });
-    };
-
     self.initFullPages = function () {
         self.pages = new fullpage('#wrapper', {
             lockAnchors: true,
             sectionSelector: 'section',
             navigation: true,
             slidesNavigation: true,
-            navigationTooltips: ['Home', 'Projetos'],
         });
     };
 
@@ -67,23 +55,38 @@ window.Main = new (function () {
             el: '#wrapper',
             data: {
                 theme: self.isDarkMode ? 'theme-dark' : 'theme-light',
+                languages: self.supportedLangs,
+                currentLang: self.currentLang,
                 content: {
-                    sections: {
-                        about: {},
-                        photography: {},
-                        projects: {},
-                    },
+                    title: '',
+                    subtitle: '',
+                    work: {},
+                    contact: {},
                 },
                 projects: [],
                 links: {},
             },
             beforeMount: async function () {
                 var vue = this;
+
+                YAML.fromURL('/i18n/' + self.lang + '.yml', function (data) {
+                    vue.content = data;
+                });
+
+                YAML.fromURL('/data/links.yml', function (data) {
+                    vue.links = data;
+                });
+
+                YAML.fromURL('/data/projects.yml', function (data) {
+                    vue.projects = data.projects;
+                    self.initColors();
+                });
+
                 // self.$http
-                //     .get('/i18n/' + self.lang + '.json')
+                //     .get('/i18n/' + self.lang + '.yml')
                 //     .then(function (d) {
                 //         var data = d.data;
-                //         vue.content = data;
+                //         vue.content = YAML.parse(data);
                 //     });
                 // self.$http.get('/data/links.json').then(function (d) {
                 //     var data = d.data;
@@ -97,13 +100,16 @@ window.Main = new (function () {
             methods: {
                 changeLang: function (lang) {
                     var vue = this;
+
+                    if (lang == self.lang) return;
+
                     self.lang = lang;
-                    self.$http
-                        .get('/i18n/' + self.lang + '.json')
-                        .then(function (d) {
-                            var data = d.data;
-                            vue.content = data;
-                        });
+                    this.currentLang = lang;
+                    YAML.fromURL('/i18n/' + self.lang + '.yml', function (
+                        data,
+                    ) {
+                        vue.content = data;
+                    });
                 },
                 toggleTheme: function () {
                     this.theme =
