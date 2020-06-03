@@ -3,10 +3,10 @@ projects:
   #   color: rgb(87, 18, 98)
   #   image: ./img/work/maria.png
   #   link: 
-  # - name: Xoot
-  #   color: rgb(0, 78, 123)
-  #   image: ./img/work/xoot.png
-  #   link: \#
+  - name: Xoot
+    color: rgb(0, 78, 123)
+    image: ./img/work/xoot.png
+    link: https://play.google.com/store/apps/details?id=com.xoot.ezoom
   - name: Roboagro
     color: rgb(198, 33, 39)
     image: ./img/work/roboagro.png
