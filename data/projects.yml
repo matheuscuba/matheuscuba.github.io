@@ -1,8 +1,4 @@
-projects:
-  # - name: Maria Açai
-  #   color: rgb(87, 18, 98)
-  #   image: ./img/work/maria.png
-  #   link: 
+projects: 
   - name: Xoot
     color: rgb(0, 78, 123)
     image: ./img/work/xoot.png
@@ -11,6 +7,10 @@ projects:
     color: rgb(198, 33, 39)
     image: ./img/work/roboagro.png
     link: https://play.google.com/store/apps/details?id=com.ezoom.roboagro
+  - name: Maria Açai
+    color: rgb(87, 18, 98)
+    image: ./img/work/maria.png
+    link:    
   # - name: Recicle Bem
   #   color: rgb(255, 255, 255)
   #   image: ./img/work/recicle.png
